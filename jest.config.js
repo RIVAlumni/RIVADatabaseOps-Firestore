@@ -13,7 +13,7 @@ module.exports = {
         statusIgnoreFilter: "pending",
         dateFormat: "dd-mm-yyyy HH:MM:ss",
         outputPath: "report/index.html",
-        pageTitle: "RIVADatabase Operations Test Result",
+        pageTitle: "Firestore Rules Unit Test Result",
       },
     ],
   ],
