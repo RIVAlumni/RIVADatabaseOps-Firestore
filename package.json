@@ -1,0 +1,19 @@
+{
+  "name": "rivadatabaseops-rules",
+  "version": "1.0.0",
+  "description": "The ruleset safeguarding RIVAlumni's sensitive information database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIVAlumni/RIVADatabaseOps-Rules.git"
+  },
+  "author": "RIVAlumni, Aaron Teo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RIVAlumni/RIVADatabaseOps-Rules/issues"
+  },
+  "homepage": "https://github.com/RIVAlumni/RIVADatabaseOps-Rules#readme"
+}
