@@ -1,3 +1,4 @@
+import { name, random } from "faker"
 import { setup, teardown } from ".."
 import { firestore } from "@firebase/testing"
 
@@ -9,8 +10,8 @@ describe("Alumni User", () => {
   beforeEach(async () => (db = await setup({ uid: "windows" }, data)))
   afterEach(async () => await teardown())
 
-  it("should deny reading/writing/deleting a user document", async () => {
-    const ref = db.doc("users/darwin")
+  it("should deny reading/writing/deleting any user document", async () => {
+    const ref = db.doc(`users/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
     await expect(ref.set({})).toDeny()
@@ -27,8 +28,8 @@ describe("Alumni User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should deny reading/writing/deleting a member document", async () => {
-    const ref = db.doc("members/darwinMembership")
+  it("should deny reading/writing/deleting any member document", async () => {
+    const ref = db.doc(`members/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
     await expect(ref.set({})).toDeny()
@@ -45,8 +46,8 @@ describe("Alumni User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should allow reading and deny writing/deleting an event document", async () => {
-    const ref = db.doc("events/20191211")
+  it("should allow reading and deny writing/deleting any event document", async () => {
+    const ref = db.doc(`events/${random.number(99999999)}`)
 
     await expect(ref.get()).toAllow()
     await expect(ref.set({})).toDeny()
@@ -54,8 +55,8 @@ describe("Alumni User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should deny reading/writing/deleting a participation document", async () => {
-    const ref = db.doc("participations/darwinParticipation")
+  it("should deny reading/writing/deleting any participation document", async () => {
+    const ref = db.doc(`participations/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
     await expect(ref.set({})).toDeny()
