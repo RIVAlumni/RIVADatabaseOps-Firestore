@@ -4,7 +4,8 @@
   "description": "The ruleset safeguarding RIVAlumni's sensitive information database.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "firebase emulators:exec --only firestore \"jest --verbose --runInBand\"",
+    "test:watch": "firebase emulators:exec --only firestore \"jest --verbose --watchAll --runInBand\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,18 @@
   "bugs": {
     "url": "https://github.com/RIVAlumni/RIVADatabaseOps-Rules/issues"
   },
-  "homepage": "https://github.com/RIVAlumni/RIVADatabaseOps-Rules#readme"
+  "homepage": "https://github.com/RIVAlumni/RIVADatabaseOps-Rules#readme",
+  "devDependencies": {
+    "@firebase/testing": "^0.20.1",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
+    "faker": "^4.1.0",
+    "jest": "^26.0.1",
+    "jest-html-reporter": "^3.1.3",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/faker": "^4.1.12"
+  }
 }
