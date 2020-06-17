@@ -1,6 +1,6 @@
-import { firestore } from "@firebase/testing"
+import { random } from "faker"
 import { setup, teardown } from ".."
-import { random, internet } from "faker"
+import { firestore } from "@firebase/testing"
 
 describe("Anonymous User", () => {
   let db: firestore.Firestore
