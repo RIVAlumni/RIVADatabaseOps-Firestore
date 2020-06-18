@@ -12,7 +12,7 @@ module.exports = {
         includeFailureMsg: true,
         statusIgnoreFilter: "pending",
         dateFormat: "dd-mm-yyyy HH:MM:ss",
-        outputPath: "report/index.html",
+        outputPath: "ui-report/index.html",
         pageTitle: "Firestore Rules Unit Test Result",
       },
     ],

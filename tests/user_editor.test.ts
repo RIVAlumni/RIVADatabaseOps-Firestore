@@ -11,7 +11,7 @@ describe("Editor User", () => {
   afterEach(async () => await teardown())
 
   it("should deny reading/writing/deleting any user document", async () => {
-    const ref = db.doc(`users/${name.firstName()}`)
+    const ref = db.doc(`users/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
     await expect(ref.set({})).toDeny()
@@ -29,7 +29,7 @@ describe("Editor User", () => {
   })
 
   it("should allow reading/writing and deny deleting any member document", async () => {
-    const ref = db.doc(`members/${name.firstName()}`)
+    const ref = db.doc(`members/${random.uuid()}`)
 
     await expect(ref.get()).toAllow()
     await expect(ref.set({})).toAllow()
@@ -55,17 +55,8 @@ describe("Editor User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should allow reading/writing and deny deleting own participation document", async () => {
-    const ref = db.doc("participations/linuxParticipation")
-
-    await expect(ref.get()).toAllow()
-    await expect(ref.set({})).toAllow()
-    await expect(ref.update({})).toAllow()
-    await expect(ref.delete()).toDeny()
-  })
-
   it("should allow reading/writing and deny deleting any participation document", async () => {
-    const ref = db.doc(`participations/${name.firstName()}`)
+    const ref = db.doc(`participations/${random.uuid()}`)
 
     await expect(ref.get()).toAllow()
     await expect(ref.set({})).toAllow()

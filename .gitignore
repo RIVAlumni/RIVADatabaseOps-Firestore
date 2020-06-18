@@ -101,4 +101,4 @@ dist
 .tern-port
 
 # HTML Report Files
-report/index.html
+ui-report
