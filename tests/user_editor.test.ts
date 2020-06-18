@@ -1,4 +1,4 @@
-import { name, random } from "faker"
+import { random } from "faker"
 import { setup, teardown } from ".."
 import { firestore } from "@firebase/testing"
 

@@ -4,8 +4,8 @@
   "description": "The ruleset safeguarding RIVAlumni's sensitive information database.",
   "main": "index.js",
   "scripts": {
-    "test": "firebase emulators:exec --only firestore \"jest --verbose --runInBand\"",
-    "test:watch": "firebase emulators:exec --only firestore \"jest --verbose --watchAll --runInBand\""
+    "test": "firebase emulators:exec --only firestore \"jest\"",
+    "test:watch": "firebase emulators:exec --only firestore \"jest --watchAll --runInBand\""
   },
   "repository": {
     "type": "git",
