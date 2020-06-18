@@ -8,7 +8,7 @@ describe("Anonymous User", () => {
   beforeEach(async () => (db = await setup(undefined)))
   afterEach(async () => await teardown())
 
-  it("should deny reading/writing/deleting a user document", async () => {
+  it("should deny reading/writing/deleting any user document", async () => {
     const ref = db.doc(`users/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
@@ -17,7 +17,7 @@ describe("Anonymous User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should deny reading/writing/deleting a member document", async () => {
+  it("should deny reading/writing/deleting any member document", async () => {
     const ref = db.doc(`members/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()
@@ -26,7 +26,7 @@ describe("Anonymous User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should deny reading/writing/deleting an event document", async () => {
+  it("should deny reading/writing/deleting any event document", async () => {
     const ref = db.doc(`events/${random.number(99999999)}`)
 
     await expect(ref.get()).toDeny()
@@ -35,7 +35,7 @@ describe("Anonymous User", () => {
     await expect(ref.delete()).toDeny()
   })
 
-  it("should deny reading/writing/deleting a participation document", async () => {
+  it("should deny reading/writing/deleting any participation document", async () => {
     const ref = db.doc(`participations/${random.uuid()}`)
 
     await expect(ref.get()).toDeny()

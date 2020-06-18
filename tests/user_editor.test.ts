@@ -72,4 +72,13 @@ describe("Editor User", () => {
     await expect(ref.update({})).toAllow()
     await expect(ref.delete()).toDeny()
   })
+
+  it("should allow reading/writing and deny deleting own participation document", async () => {
+    const ref = db.doc("participations/linuxParticipation")
+
+    await expect(ref.get()).toAllow()
+    await expect(ref.set({})).toAllow()
+    await expect(ref.update({})).toAllow()
+    await expect(ref.delete()).toDeny()
+  })
 })

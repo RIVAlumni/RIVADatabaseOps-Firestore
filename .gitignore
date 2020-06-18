@@ -99,3 +99,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# HTML Report Files
+report/index.html
