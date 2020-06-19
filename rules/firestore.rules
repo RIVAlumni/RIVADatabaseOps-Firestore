@@ -72,6 +72,15 @@ service cloud.firestore {
       allow delete: if getRole('Administrator');
     }
 
+    match /aggregations/events {
+      // Non-Privileged User
+      allow get: if getRole('Alumni');
+
+      // Privileged User
+      allow get: if getRole('Editor');
+      allow get, delete: if getRole('Administrator');
+    }
+
     match /participations/{participationID} {
       allow read, write: if false;
 
@@ -86,6 +95,15 @@ service cloud.firestore {
                     || getRole('Administrator');
 
       allow delete: if getRole('Administrator');
+    }
+
+    match /aggregations/participations {
+      // Non-Privileged User
+      allow get: if getRole('Alumni');
+
+      // Privileged User
+      allow get: if getRole('Editor');
+      allow get, delete: if getRole('Administrator');
     }
 
     function existingData() {
