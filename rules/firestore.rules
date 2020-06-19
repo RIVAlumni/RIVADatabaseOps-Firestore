@@ -7,7 +7,7 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
-    
+
     match /users/{userID} {
       // Non-Privileged User
       allow get: if request.auth.uid == userID;
@@ -19,7 +19,13 @@ service cloud.firestore {
             update,
             delete: if getRole('Administrator');
     }
-    
+
+    match /aggregations/users {
+      // Privileged User
+      allow get: if getRole('Editor');
+      allow get, delete: if getRole('Administrator');
+    }
+
   	match /members/{memberID} {
       // Non-Privileged User
       allow get: if getUserData()['Membership ID'] == memberID;
@@ -45,11 +51,17 @@ service cloud.firestore {
         allow delete: if getRole('Administrator');
       }
     }
-    
+
+    match /aggregations/members {
+      // Privileged User
+      allow get: if getRole('Editor');
+      allow get, delete: if getRole('Administrator');
+    }
+
     match /events/{eventID} {
       // Non-Privileged User
       allow get, list: if getRole('Alumni');
-      
+
       // Privileged User
       allow get,
             list,
@@ -59,7 +71,7 @@ service cloud.firestore {
 
       allow delete: if getRole('Administrator');
     }
-    
+
     match /participations/{participationID} {
       allow read, write: if false;
 
