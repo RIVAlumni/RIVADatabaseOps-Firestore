@@ -46,6 +46,24 @@ describe("Administrator User", () => {
     await expect(ref.delete()).toAllow()
   })
 
+  it("should deny reading/writing/deleting any remarks document", async () => {
+    const ref = db.doc(`members/${random.uuid()}/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toAllow()
+    await expect(ref.set({})).toAllow()
+    await expect(ref.update({})).toAllow()
+    await expect(ref.delete()).toAllow()
+  })
+
+  it("should deny reading/writing/deleting own remarks document", async () => {
+    const ref = db.doc(`members/darwinMembership/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toAllow()
+    await expect(ref.set({})).toAllow()
+    await expect(ref.update({})).toAllow()
+    await expect(ref.delete()).toAllow()
+  })
+
   it("should allow reading/writing/deleting any event document", async () => {
     const ref = db.doc(`events/${random.number(99999999)}`)
 

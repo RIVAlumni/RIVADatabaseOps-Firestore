@@ -46,6 +46,24 @@ describe("Alumni User", () => {
     await expect(ref.delete()).toDeny()
   })
 
+  it("should deny reading/writing/deleting any remarks document", async () => {
+    const ref = db.doc(`members/${random.uuid()}/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toDeny()
+    await expect(ref.set({})).toDeny()
+    await expect(ref.update({})).toDeny()
+    await expect(ref.delete()).toDeny()
+  })
+
+  it("should deny reading/writing/deleting own remarks document", async () => {
+    const ref = db.doc(`members/windowsMembership/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toDeny()
+    await expect(ref.set({})).toDeny()
+    await expect(ref.update({})).toDeny()
+    await expect(ref.delete()).toDeny()
+  })
+
   it("should allow reading and deny writing/deleting any event document", async () => {
     const ref = db.doc(`events/${random.number(99999999)}`)
 

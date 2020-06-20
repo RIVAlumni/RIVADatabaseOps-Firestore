@@ -46,6 +46,24 @@ describe("Editor User", () => {
     await expect(ref.delete()).toDeny()
   })
 
+  it("should deny reading/writing/deleting any remarks document", async () => {
+    const ref = db.doc(`members/${random.uuid()}/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toAllow()
+    await expect(ref.set({})).toAllow()
+    await expect(ref.update({})).toAllow()
+    await expect(ref.delete()).toDeny()
+  })
+
+  it("should deny reading/writing/deleting own remarks document", async () => {
+    const ref = db.doc(`members/linuxMembership/remarks/${random.uuid()}`)
+
+    await expect(ref.get()).toAllow()
+    await expect(ref.set({})).toAllow()
+    await expect(ref.update({})).toAllow()
+    await expect(ref.delete()).toDeny()
+  })
+
   it("should allow reading/writing and deny deleting any event document", async () => {
     const ref = db.doc(`events/${random.number(99999999)}`)
 
